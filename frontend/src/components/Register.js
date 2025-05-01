@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import axios from "axios";
+import React, { useState } from "react";
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
+    name: "",
+    email: "",
+    phone: "",
   });
 
   const handleChange = (e) => {
@@ -15,14 +15,17 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log('Sending registration data:', formData);
-      const response = await axios.post('http://localhost:5000/api/registrations', formData);
-      console.log('Registration response:', response.data);
+      console.log("Sending registration data:", formData);
+      const response = await axios.post(
+        "http://localhost:5000/api/registrations",
+        formData
+      );
+      console.log("Registration response:", response.data);
       alert(response.data.message);
-      setFormData({ name: '', email: '', phone: '' }); // Clear the form
+      setFormData({ name: "", email: "", phone: "" }); // Clear the form
     } catch (err) {
-      console.error('Registration error:', err);
-      alert(err.response?.data?.message || 'Registration failed');
+      console.error("Registration error:", err);
+      alert(err.response?.data?.message || "Registration failed");
     }
   };
 
